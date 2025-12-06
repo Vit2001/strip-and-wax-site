@@ -276,4 +276,9 @@ footer {
         color: #fff; /* Prevents color flicker on mobile taps */
     }
 
+    html {
+    scroll-behavior: smooth;
 }
+
+}
+
