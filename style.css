@@ -1,16 +1,20 @@
 /* --- Variables & Reset --- */
 :root {
     --primary-color: #183b2a; /* Deep Forest Green */
-    --secondary-color: #2b8d5e; /* Vibrant Accent Green */
+    --secondary-color: #ffc800; /* Vibrant Yellow Accent */
     --text-dark: #333;
     --text-light: #fff;
-    --bg-light: #f4f4f4;
+    --bg-light: #22533b; /* Mid-Forest Green */
 }
 
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
@@ -25,10 +29,15 @@ body {
     padding: 0 20px;
 }
 
-/* --- Navigation --- */
+/* Fixes anchor tags getting hidden behind fixed header */
+section[id] {
+    scroll-margin-top: 60px;
+}
+
+/* --- Navigation Banner Section --- */
 header {
-    background: #fff;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    background: var(--primary-color); /* Green background */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3); /* Slightly darker shadow for separation */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -44,7 +53,7 @@ header {
 .logo {
     font-size: 1.5rem;
     font-weight: 700;
-    color: var(--primary-color);
+    color: var(--secondary-color); /* Yellow lettering */
 }
 
 nav ul {
@@ -58,38 +67,56 @@ nav ul li {
 
 nav ul li a {
     text-decoration: none;
-    color: var(--text-dark);
+    color: var(--secondary-color); /* Yellow menu links */
     font-weight: 500;
+    transition: color 0.3s, text-decoration 0.3s;
 }
 
 nav ul li a:hover {
-    color: var(--secondary-color);
+    color: var(--text-light); /* Turns white on hover for clean visual feedback */
+    text-decoration: underline;
 }
 
 /* --- Hero Section (Home/About) --- */
 .hero-section {
-    /* Background uses a dark gradient overlay on an image */
-background: linear-gradient(#183b2a, #2b8d5e), url('https://images.unsplash.com/photo-1581578731117-104f2a8d23e9?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
-    background-position: center;
+    background: linear-gradient(to bottom, var(--primary-color), var(--bg-light));
     height: 90vh;
     display: flex;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
     text-align: center;
-    color: var(--text-light);
+    padding: 0 20px;
 }
 
 .hero-content {
-    max-width: 700px;
+    max-width: 800px;
+}
+
+/* Ensures high contrast for all text over the dark green gradient */
+.hero-content h1,
+.hero-content h2,
+.hero-content .about-text {
+    color: var(--text-light);
 }
 
 .hero-content h1 {
     font-size: 3rem;
-    margin-bottom: 1rem;
+    font-weight: 700;
+    margin-bottom: 0.75rem;
+    line-height: 1.2;
+}
+
+.hero-content h2 {
+    font-size: 1.4rem;
+    font-weight: 300;
+    margin-bottom: 1.5rem;
+    line-height: 1.4;
 }
 
 .about-text {
-    font-size: 1.2rem;
-    margin-bottom: 2rem;
+    font-size: 1.1rem;
+    margin-bottom: 2.5rem;
 }
 
 /* --- Buttons --- */
@@ -108,15 +135,18 @@ background: linear-gradient(#183b2a, #2b8d5e), url('https://images.unsplash.com/
     transition: 0.3s;
 }
 
+/* Primary Yellow Button */
 .btn-primary {
     background-color: var(--secondary-color);
-    color: #fff;
+    color: var(--text-dark); /* Dark text for readability on yellow */
 }
 
 .btn-primary:hover {
-    background-color: #183b2a;
+    background-color: var(--text-light);
+    color: var(--primary-color);
 }
 
+/* Outline Button (Used in Hero) */
 .btn-secondary {
     background-color: transparent;
     border: 2px solid #fff;
@@ -124,24 +154,27 @@ background: linear-gradient(#183b2a, #2b8d5e), url('https://images.unsplash.com/
 }
 
 .btn-secondary:hover {
-    background-color: #fff;
-    color: var(--primary-color);
+    background-color: var(--secondary-color);
+    border-color: var(--secondary-color);
+    color: var(--text-dark);
 }
 
-/* --- Services Section --- */
+/* --- Shared Section Padding & Section Titles --- */
 .section-padding {
     padding: 60px 0;
 }
 
-.bg-light {
-    background-color: var(--bg-light);
-}
-
+/* Section Headings turn white since they sit on green backgrounds now */
 .section-title {
     text-align: center;
     font-size: 2.5rem;
     margin-bottom: 40px;
-    color: var(--primary-color);
+    color: var(--text-light);
+}
+
+/* --- Services Section (Mid-Green Background) --- */
+.bg-light {
+    background-color: var(--bg-light);
 }
 
 .services-grid {
@@ -150,11 +183,12 @@ background: linear-gradient(#183b2a, #2b8d5e), url('https://images.unsplash.com/
     gap: 20px;
 }
 
+/* Crisp white service cards to contrast against the green background */
 .service-card {
     background: #fff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
     text-align: center;
     transition: transform 0.3s;
 }
@@ -168,14 +202,30 @@ background: linear-gradient(#183b2a, #2b8d5e), url('https://images.unsplash.com/
     color: var(--primary-color);
 }
 
-/* --- Contact Form --- */
+.service-card p {
+    color: var(--text-dark);
+}
+
+/* --- Contact Section (Deep Forest Green Background) --- */
+#contact {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+}
+
+.section-subtitle {
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--text-light);
+}
+
 .form-wrapper {
     max-width: 600px;
     margin: 0 auto;
     background: #fff;
     padding: 30px;
     border-radius: 8px;
-    box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    color: var(--text-dark); /* Keeps form input labels dark/readable */
 }
 
 .form-group {
@@ -206,12 +256,19 @@ background: linear-gradient(#183b2a, #2b8d5e), url('https://images.unsplash.com/
     font-size: 1rem;
 }
 
-/* --- Enhanced Footer Styling --- */
+/* --- Geographic Summary Section (Mid-Green Background) --- */
+.geo-description {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    line-height: 1.8;
+    color: var(--text-light);
+}
 
-/* Reset footer for a multi-column layout */
+/* --- Footer Styling --- */
 footer {
-    background: var(--primary-color); /* Dark Green Background */
-    color: var(--text-light);     /* White text */
+    background: #0f251a; /* Extra dark forest green shade for clear footer separation */
+    color: var(--text-light);     
     padding: 40px 0;
     text-align: left; 
 }
@@ -232,30 +289,33 @@ footer {
     font-size: 1.2rem;
     font-weight: 700;
     margin-bottom: 10px;
-    color: var(--secondary-color); 
+    color: var(--secondary-color); /* Yellow Accent */
 }
 
 .footer-contact h4, .footer-location h4 {
-    color: var(--secondary-color); 
+    color: var(--secondary-color); /* Yellow Accent */
     margin-bottom: 10px;
 }
 
-/* Style the links in the footer (Phone/Email) */
 .footer-contact a {
-    color: #fff; /* White links for high contrast */
+    color: #fff;
     text-decoration: none;
     transition: color 0.3s;
 }
 
 .footer-contact a:hover {
-    color: var(--secondary-color); /* Links turn Accent Green on hover */
+    color: var(--secondary-color); /* Turns Yellow on Hover */
     text-decoration: underline;
 }
 
 /* --- Mobile Responsive Tweaks --- */
 @media (max-width: 768px) {
     .hero-content h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
+    }
+    
+    .hero-content h2 {
+        font-size: 1.2rem;
     }
     
     .button-group {
@@ -273,13 +333,6 @@ footer {
         margin-bottom: 20px;
     }
     .footer-contact a:hover {
-        color: #fff; /* Prevents color flicker on mobile taps */
+        color: var(--secondary-color); /* Adjusts mobile tap color to match theme */
     }
-
-    html {
-    scroll-behavior: smooth;
 }
-
-}
-
-
