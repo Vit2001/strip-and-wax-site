@@ -5,12 +5,44 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Commercial Cleaning & Janitorial Services | Strip and Wax Floor Care</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     
     <meta name="description" content="Commercial janitorial and office cleaning service in Snohomish & King County. Daily cleaning, floor stripping & waxing, and facility maintenance for businesses.">
     <link rel="canonical" href="https://stripandwaxfloorcare.com/" />
+
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "ProfessionalService",
+      "name": "Strip and Wax Floor Care",
+      "url": "https://stripandwaxfloorcare.com",
+      "telephone": "+14253434939",
+      "email": "info@stripandwaxfloorcare.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Everett",
+        "addressRegion": "WA",
+        "addressCountry": "US"
+      },
+      "areaServed": [
+        {
+          "@type": "AdministrativeArea",
+          "name": "Snohomish County"
+        },
+        {
+          "@type": "AdministrativeArea",
+          "name": "King County"
+        }
+      ],
+      "description": "Commercial janitorial and office cleaning service in Snohomish & King County. Daily cleaning, floor stripping & waxing, and facility maintenance for businesses.",
+      "priceRange": "$$"
+    }
+    </script>
 
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-6CEJPKT6T4"></script>
@@ -86,17 +118,18 @@
                 <form action="https://formspree.io/f/xvgekrpj" method="POST">
                     <div class="form-group">
                         <label for="name">Full Name</label>
-                        <input type="text" id="name" name="name" required>
+                        <input type="text" id="name" name="name" autocomplete="name" required>
                     </div>
                     
                     <div class="form-group">
                         <label for="email">Email Address</label>
-                        <input type="email" id="email" name="email" required>
+                        <input type="email" id="email" name="email" autocomplete="email" required>
                     </div>
 
                     <div class="form-group">
                         <label for="service-type">Service Interested In</label>
                         <select id="service-type" name="service-type">
+                            <option value="" disabled selected>Select a service...</option>
                             <option value="General Cleaning">General Office Cleaning</option>
                             <option value="Floor Care">Floor Care</option>
                             <option value="Degreasing">Degreasing</option>
